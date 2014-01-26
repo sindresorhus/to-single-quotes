@@ -1,6 +1,6 @@
 {
   "name": "to-single-quotes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Convert matching double-quotes to single-quotes: I \"love\" unicorns => I 'love' unicorns",
   "license": "MIT",
   "repository": "sindresorhus/to-single-quotes",

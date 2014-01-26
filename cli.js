@@ -36,7 +36,11 @@ if (input.length > 0) {
 	return;
 }
 
+var stdin = '';
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (data) {
-	process.stdout.write(toSingleQuotes(data));
+	stdin += data;
+});
+process.stdin.on('end', function () {
+	process.stdout.write(toSingleQuotes(stdin));
 });
