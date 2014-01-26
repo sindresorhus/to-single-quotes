@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+	toSingleQuote = require('../to-single-quotes'),
+	files = process.argv.slice(2);
+
+files.forEach(function (fileName) {
+	'use strict';
+
+	fs.readFile(fileName, 'utf8', function (error, content) {
+		if (error) {
+			throw error;
+		}
+		fs.writeFile(fileName, toSingleQuote(content), 'utf8', function (error) {
+			if (error) {
+				throw error;
+			}
+			console.log(fileName);
+		});
+	});
+});

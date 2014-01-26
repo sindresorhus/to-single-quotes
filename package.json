@@ -19,6 +19,7 @@
   "files": [
     "to-single-quotes.js"
   ],
+  "bin": "bin/to-single-quotes",
   "keywords": [
     "normalize",
     "quotes",
