@@ -5,6 +5,9 @@
   "license": "MIT",
   "repository": "sindresorhus/to-single-quotes",
   "main": "to-single-quotes.js",
+  "bin": {
+    "to-single-quotes": "cli.js"
+  },
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -17,9 +20,9 @@
     "test": "mocha"
   },
   "files": [
-    "to-single-quotes.js"
+    "to-single-quotes.js",
+    "cli.js"
   ],
-  "bin": "bin/to-single-quotes",
   "keywords": [
     "normalize",
     "quotes",
