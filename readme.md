@@ -69,10 +69,6 @@ toSingleQuotes('I love "unicorns" \'and\' "ponies"');
 //=> I love 'unicorns' 'and' 'ponies'
 ```
 
-Or using the command line
-```
-to-single-quotes path/to/*.js
-```
 
 ## License
 
