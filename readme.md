@@ -1,4 +1,4 @@
-# to-single-quotes [![Build Status](https://travis-ci.org/sindresorhus/to-single-quotes.png?branch=master)](http://travis-ci.org/sindresorhus/to-single-quotes)
+# to-single-quotes [![Build Status](https://travis-ci.org/sindresorhus/to-single-quotes.svg?branch=master)](https://travis-ci.org/sindresorhus/to-single-quotes)
 
 > Convert matching double-quotes to single-quotes: `I "love" unicorns` => `I 'love' unicorns`
 
@@ -72,4 +72,4 @@ toSingleQuotes('I love "unicorns" \'and\' "ponies"');
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
