@@ -9,46 +9,20 @@ See [to-double-quotes](https://github.com/sindresorhus/to-double-quotes) for the
 
 Download [manually](https://github.com/sindresorhus/to-single-quotes/releases) or with a package-manager.
 
-#### [npm](https://npmjs.org/package/to-single-quotes)
-
-```
-npm install --save to-single-quotes
+```bash
+$ npm install --save to-single-quotes
 ```
 
-Or globally if you want to use it as a CLI app:
-
-```
-npm install --global to-single-quotes
+```bash
+$ bower install --save to-single-quotes
 ```
 
-You can then use it in your terminal like:
-
-```
-to-single-quotes src/*.txt
-```
-
-*(make sure to have a backup before running this!)*
-
-Or pipe something to it:
-
-```
-cat input.txt | to-single-quotes > output.txt
-```
-
-#### [Bower](http://bower.io)
-
-```
-bower install --save to-single-quotes
-```
-
-#### [Component](https://github.com/component/component)
-
-```
-component install sindresorhus/to-single-quotes
+```bash
+$ component install sindresorhus/to-single-quotes
 ```
 
 
-## Example
+## Usage
 
 ##### Node.js
 
@@ -67,6 +41,28 @@ var toSingleQuotes = require('to-single-quotes');
 ```js
 toSingleQuotes('I love "unicorns" \'and\' "ponies"');
 //=> I love 'unicorns' 'and' 'ponies'
+```
+
+
+## CLI
+
+You can also use it as a CLI app by installing it globally:
+
+```bash
+$ npm install --global to-single-quotes
+```
+
+### Usage
+
+```bash
+$ to-single-quotes --help
+
+Usage
+  to-single-quotes <path|glob>
+  cat input.txt | to-single-quotes > output.txt
+
+Example
+  to-single-quotes src/*.txt
 ```
 
 
