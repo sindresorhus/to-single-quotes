@@ -23,6 +23,8 @@
     "cli.js"
   ],
   "keywords": [
+    "cli",
+    "bin",
     "normalize",
     "quotes",
     "quote",
