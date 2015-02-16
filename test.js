@@ -14,4 +14,5 @@ it('should convert matching double-quotes to single-quotes', function () {
 	assert.equal(s('\\\"foo\\\"'), '\'foo\'');
 	assert.equal(s(JSON.stringify({'a': '<a href="addr">'})), '{\'a\':\'<a href="addr">\'}');
 	assert.equal(s(JSON.stringify({'a': 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
+  	assert.equal(s(JSON.stringify({"a": "b''c" })), "{'a':'b\'\'c'}");
 });
