@@ -5,7 +5,7 @@
 
 ## Usage
 
-```sh
+```
 $ npm install --save to-single-quotes
 ```
 
@@ -19,7 +19,7 @@ toSingleQuotes('I love "unicorns" \'and\' "ponies"');
 
 ## CLI
 
-```sh
+```
 $ npm install --global to-single-quotes
 ```
 
