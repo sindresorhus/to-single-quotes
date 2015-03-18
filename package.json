@@ -39,7 +39,8 @@
     "replace"
   ],
   "dependencies": {
-    "get-stdin": "^3.0.0"
+    "get-stdin": "^3.0.0",
+    "meow": "^3.1.0"
   },
   "devDependencies": {
     "mocha": "*"

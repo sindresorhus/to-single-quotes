@@ -27,11 +27,11 @@ $ npm install --global to-single-quotes
 $ to-single-quotes --help
 
   Usage
-    to-single-quotes <string>
-    echo <string> | to-single-quotes
+    $ to-single-quotes <string>
+    $ echo <string> | to-single-quotes
 
   Example
-    to-single-quotes 'I love "unicorns"'
+    $ to-single-quotes 'I love "unicorns"'
     I love 'unicorns'
 ```
 
