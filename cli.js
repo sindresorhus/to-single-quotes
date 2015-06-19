@@ -13,7 +13,7 @@ var cli = meow({
 		'Example',
 		'  $ to-single-quotes \'I love "unicorns"\'',
 		'  I love \'unicorns\''
-	].join('\n')
+	]
 });
 
 function init(data) {
