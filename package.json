@@ -34,7 +34,6 @@
   ],
   "devDependencies": {
     "ava": "*",
-    "fs": "0.0.2",
     "xo": "*"
   }
 }
