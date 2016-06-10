@@ -14,7 +14,6 @@ test('convert matching double-quotes to single-quotes', t => {
 	t.is(fn(JSON.stringify({a: '<a href="addr">'})), '{\'a\':\'<a href="addr">\'}');
 	t.is(fn(JSON.stringify({a: 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
 	t.is(fn(JSON.stringify({a: 'b\'\'c'})), '{\'a\':\'b\\\'\\\'c\'}');
-	t.pass();
 });
 
 test('convert matching double-quotes to single-quotes but do not touch escaped backslashes', t => {
@@ -27,5 +26,4 @@ test('convert matching double-quotes to single-quotes despite backslashes', t =>
 	t.is(fn('"\\\\\'"'), '\'\\\\\\\'\'', 'Double backslash');
 	t.is(fn('"\\\\\' \\\\\'"'), '\'\\\\\\\' \\\\\\\'\'', 'Repetition');
 	t.is(fn('"\\\\n \\\\\'"'), '\'\\\\n \\\\\\\'\'', 'With another backslash character');
-	t.pass();
 });
