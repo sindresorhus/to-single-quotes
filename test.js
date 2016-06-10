@@ -1,3 +1,4 @@
+import fs from 'fs';
 import test from 'ava';
 import fn from './';
 
@@ -14,6 +15,10 @@ test('convert matching double-quotes to single-quotes', t => {
 	t.is(fn(JSON.stringify({a: 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
 	t.is(fn(JSON.stringify({a: 'b\'\'c'})), '{\'a\':\'b\\\'\\\'c\'}');
 	t.pass();
+});
+
+test('convert matching double-quotes to single-quotes but do not touch escaped backslashes', t => {
+	t.is(fn(fs.readFileSync('./tests/do-not-touch-escaped-backslashes/input.txt', 'utf-8')), fs.readFileSync('./tests/do-not-touch-escaped-backslashes/expected-result.txt', 'utf-8'));
 });
 
 test('convert matching double-quotes to single-quotes despite backslashes', t => {
