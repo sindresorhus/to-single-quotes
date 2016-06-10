@@ -10,7 +10,6 @@ test('convert matching double-quotes to single-quotes', t => {
 	t.is(fn('"foo"'), '\'foo\'');
 	t.is(fn('bar "foo" baz'), 'bar \'foo\' baz');
 	t.is(fn('\'bar\' "foo" \'baz\''), '\'bar\' \'foo\' \'baz\'');
-	t.is(fn('\\\"foo\\\"'), '\'foo\'');
 	t.is(fn(JSON.stringify({a: '<a href="addr">'})), '{\'a\':\'<a href="addr">\'}');
 	t.is(fn(JSON.stringify({a: 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
 	t.is(fn(JSON.stringify({a: 'b\'\'c'})), '{\'a\':\'b\\\'\\\'c\'}');
