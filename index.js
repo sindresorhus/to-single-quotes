@@ -3,7 +3,7 @@ module.exports = function (str) {
 	return str.replace(/(?:\\*)?"([^"\\]*\\.)*[^"]*"/g, function (match) {
 		return match
 			// unescape double-quotes
-			.replace(/\\"/g, '"')
+			.replace(/([^\\]|^)\\"/g, '$1"')
 			// escape escapes
 			.replace(/(^|[^\\])(\\+)'/g, '$1$2\\\'')
 			// escape single-quotes - round 1
