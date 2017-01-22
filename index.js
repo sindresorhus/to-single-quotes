@@ -1,19 +1,18 @@
 'use strict';
 module.exports = function (str) {
 	var result = '';
-	var x;
-	var len = str.length;
+	var i;
 	var betweenQuotes = false;
 	var quoteChar;
-	for (x = 0; x < len; x++) {
+	for (i = 0; i < str.length; i++) {
 		// found double-quote or single-quote
-		if (str[x] === '"' || str[x] === '\'') {
+		if (str[i] === '"' || str[i] === '\'') {
 			// if not processing in between quotes
 			if (!betweenQuotes) {
-				quoteChar = str[x];
+				quoteChar = str[i];
 				betweenQuotes = true;
 				result += '\'';
-			} else if (quoteChar === str[x]) {
+			} else if (quoteChar === str[i]) {
 				// if processing between quotes
 				// close quotes
 				result += '\'';
@@ -22,25 +21,25 @@ module.exports = function (str) {
 				// still inside quotes
 				result += '\\\'';
 			}
-		} else if (str[x] === '\\' && (str[x + 1] === '\'' || str[x + 1] === '"')) {
+		} else if (str[i] === '\\' && (str[i + 1] === '\'' || str[i + 1] === '"')) {
 			// if escape character is found and double or single quote after
 			// escape + single-quote
-			if (str[x + 1] === '\'') {
+			if (str[i + 1] === '\'') {
 				result += '\\\\\'';
-				x++;
-			} else if (str[x + 1] === '"') {
+				i++;
+			} else if (str[i + 1] === '"') {
 				// escape + double-quote
 				result += '"';
-				x++;
+				i++;
 			} else {
-				result += str[x];
+				result += str[i];
 			}
-		} else if (str[x] === '\\' && str[x + 1] === '\\') {
-			// backslashes --> don't touch them
+		} else if (str[i] === '\\' && str[i + 1] === '\\') {
+			// don't touch backslashes
 			result += '\\\\';
-			x++;
+			i++;
 		} else {
-			result += str[x];
+			result += str[i];
 		}
 	}
 	return result;
