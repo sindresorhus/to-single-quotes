@@ -1,7 +1,7 @@
 {
   "name": "to-single-quotes",
   "version": "2.0.1",
-  "description": "Convert matching double-quotes to single-quotes: I \"love\" unicorns → I 'love' unicorns",
+  "description": "Convert matching double-quotes to single-quotes: `I \"love\" unicorns` → `I 'love' unicorns`",
   "license": "MIT",
   "repository": "sindresorhus/to-single-quotes",
   "author": {
@@ -10,7 +10,7 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
