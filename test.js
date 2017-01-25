@@ -27,3 +27,7 @@ test('convert matching double-quotes to single-quotes despite backslashes', t =>
 	t.is(m('"\\\\\' \\\\\'"'), '\'\\\\\\\' \\\\\\\'\'', 'Repetition');
 	t.is(m('"\\\\n \\\\\'"'), '\'\\\\n \\\\\\\'\'', 'With another backslash character');
 });
+
+test('handles inner double-quotes', t => {
+	t.is(m('\'bar "foo" baz\''), '\'bar \\\'foo\\\' baz\'');
+});
