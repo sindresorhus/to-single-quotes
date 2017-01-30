@@ -1,46 +1,50 @@
 'use strict';
-module.exports = function (str) {
-	var result = '';
-	var i;
-	var betweenQuotes = false;
-	var quoteChar;
-	for (i = 0; i < str.length; i++) {
-		// found double-quote or single-quote
-		if (str[i] === '"' || str[i] === '\'') {
-			// if not processing in between quotes
+
+module.exports = str => {
+	let result = '';
+	let betweenQuotes = false;
+	let quoteChar;
+
+	for (let i = 0; i < str.length; i++) {
+		const current = str[i];
+		const next = str[i + 1];
+
+		// Found double-quote or single-quote
+		if (current === '"' || current === '\'') {
+			// If not processing in between quotes
 			if (!betweenQuotes) {
-				quoteChar = str[i];
+				quoteChar = current;
 				betweenQuotes = true;
 				result += '\'';
-			} else if (quoteChar === str[i]) {
-				// if processing between quotes
-				// close quotes
+			} else if (quoteChar === current) {
+				// If processing between quotes, close quotes
 				result += '\'';
 				betweenQuotes = false;
 			} else {
-				// still inside quotes
+				// Still inside quotes
 				result += '\\\'';
 			}
-		} else if (str[i] === '\\' && (str[i + 1] === '\'' || str[i + 1] === '"')) {
-			// if escape character is found and double or single quote after
-			// escape + single-quote
-			if (str[i + 1] === '\'') {
+		} else if (current === '\\' && (next === '\'' || next === '"')) {
+			// If escape character is found and double or single quote after
+			// Escape + single-quote
+			if (next === '\'') {
 				result += '\\\\\'';
 				i++;
-			} else if (str[i + 1] === '"') {
-				// escape + double-quote
+			} else if (next === '"') {
+				// Escape + double-quote
 				result += '"';
 				i++;
 			} else {
-				result += str[i];
+				result += current;
 			}
-		} else if (str[i] === '\\' && str[i + 1] === '\\') {
-			// don't touch backslashes
+		} else if (current === '\\' && next === '\\') {
+			// Don't touch backslashes
 			result += '\\\\';
 			i++;
 		} else {
-			result += str[i];
+			result += current;
 		}
 	}
+
 	return result;
 };
