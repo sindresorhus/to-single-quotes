@@ -1,6 +1,6 @@
 import fs from 'fs';
 import test from 'ava';
-import m from './';
+import m from '.';
 
 test('convert matching double-quotes to single-quotes', t => {
 	t.is(m(''), '');
