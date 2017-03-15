@@ -25,6 +25,10 @@ toSingleQuotes('I love "unicorns" \'and\' "ponies"');
 - [to-single-quotes-cli](https://github.com/sindresorhus/to-single-quotes-cli) - CLI for this module
 - [to-double-quotes](https://github.com/sindresorhus/to-double-quotes) - Convert matching single-quotes to double-quotes
 
+Or using the command line
+```
+to-single-quotes path/to/*.js
+```
 
 ## License
 
