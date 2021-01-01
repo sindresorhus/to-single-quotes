@@ -1,4 +1,4 @@
-# to-single-quotes [![Build Status](https://travis-ci.org/sindresorhus/to-single-quotes.svg?branch=master)](https://travis-ci.org/sindresorhus/to-single-quotes)
+# to-single-quotes
 
 > Convert matching double-quotes to single-quotes: `I "love" unicorns` → `I 'love' unicorns`
 
