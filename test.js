@@ -1,33 +1,33 @@
 import fs from 'fs';
 import test from 'ava';
-import m from '.';
+import toSingleQuotes from './index.js';
 
 test('convert matching double-quotes to single-quotes', t => {
-	t.is(m(''), '');
-	t.is(m('foo'), 'foo');
-	t.is(m('\'\''), '\'\'');
-	t.is(m('""'), '\'\'');
-	t.is(m('\'foo\''), '\'foo\'');
-	t.is(m('"foo"'), '\'foo\'');
-	t.is(m('bar "foo" baz'), 'bar \'foo\' baz');
-	t.is(m('\'bar\' "foo" \'baz\''), '\'bar\' \'foo\' \'baz\'');
-	t.is(m(JSON.stringify({a: '<a href="addr">'})), '{\'a\':\'<a href="addr">\'}');
-	t.is(m(JSON.stringify({a: 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
-	t.is(m(JSON.stringify({a: 'b\'\'c'})), '{\'a\':\'b\\\'\\\'c\'}');
+	t.is(toSingleQuotes(''), '');
+	t.is(toSingleQuotes('foo'), 'foo');
+	t.is(toSingleQuotes('\'\''), '\'\'');
+	t.is(toSingleQuotes('""'), '\'\'');
+	t.is(toSingleQuotes('\'foo\''), '\'foo\'');
+	t.is(toSingleQuotes('"foo"'), '\'foo\'');
+	t.is(toSingleQuotes('bar "foo" baz'), 'bar \'foo\' baz');
+	t.is(toSingleQuotes('\'bar\' "foo" \'baz\''), '\'bar\' \'foo\' \'baz\'');
+	t.is(toSingleQuotes(JSON.stringify({a: '<a href="addr">'})), '{\'a\':\'<a href="addr">\'}');
+	t.is(toSingleQuotes(JSON.stringify({a: 'aa\n<a href="addr">'})), '{\'a\':\'aa\\n<a href="addr">\'}');
+	t.is(toSingleQuotes(JSON.stringify({a: 'b\'\'c'})), '{\'a\':\'b\\\'\\\'c\'}');
 });
 
 test('convert matching double-quotes to single-quotes but do not touch escaped backslashes', t => {
-	t.is(m(fs.readFileSync('fixtures/dont-touch-escaped-backslashes/fixture.txt', 'utf8')), fs.readFileSync('fixtures/dont-touch-escaped-backslashes/expected.txt', 'utf8'));
+	t.is(toSingleQuotes(fs.readFileSync('fixtures/dont-touch-escaped-backslashes/fixture.txt', 'utf8')), fs.readFileSync('fixtures/dont-touch-escaped-backslashes/expected.txt', 'utf8'));
 });
 
 test('convert matching double-quotes to single-quotes despite backslashes', t => {
-	t.is(m('"1\\\'"'), '\'1\\\\\'\'', 'First sequence in the string');
-	t.is(m('"\\\'"'), '\'\\\\\'\'', 'Not the first sequence in the string');
-	t.is(m('"\\\\\'"'), '\'\\\\\\\'\'', 'Double backslash');
-	t.is(m('"\\\\\' \\\\\'"'), '\'\\\\\\\' \\\\\\\'\'', 'Repetition');
-	t.is(m('"\\\\n \\\\\'"'), '\'\\\\n \\\\\\\'\'', 'With another backslash character');
+	t.is(toSingleQuotes('"1\\\'"'), '\'1\\\\\'\'', 'First sequence in the string');
+	t.is(toSingleQuotes('"\\\'"'), '\'\\\\\'\'', 'Not the first sequence in the string');
+	t.is(toSingleQuotes('"\\\\\'"'), '\'\\\\\\\'\'', 'Double backslash');
+	t.is(toSingleQuotes('"\\\\\' \\\\\'"'), '\'\\\\\\\' \\\\\\\'\'', 'Repetition');
+	t.is(toSingleQuotes('"\\\\n \\\\\'"'), '\'\\\\n \\\\\\\'\'', 'With another backslash character');
 });
 
 test('handles inner double-quotes', t => {
-	t.is(m('\'bar "foo" baz\''), '\'bar \\\'foo\\\' baz\'');
+	t.is(toSingleQuotes('\'bar "foo" baz\''), '\'bar \\\'foo\\\' baz\'');
 });

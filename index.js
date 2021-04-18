@@ -1,9 +1,7 @@
-'use strict';
-
 function transform(input, toSingleQuotes) {
 	let result = '';
-	let betweenQuotes = false;
-	let quoteChar;
+	let isBetweenQuotes = false;
+	let quoteCharacter;
 	let changeTo = '';
 	let toChange = '';
 
@@ -15,21 +13,21 @@ function transform(input, toSingleQuotes) {
 		toChange = '\'';
 	}
 
-	for (let i = 0; i < input.length; i++) {
-		const current = input[i];
-		const next = input[i + 1];
+	for (let index = 0; index < input.length; index++) {
+		const current = input[index];
+		const next = input[index + 1];
 
 		// Found double-quote or single-quote
 		if (current === '"' || current === '\'') {
 			// If not processing in between quotes
-			if (!betweenQuotes) {
-				quoteChar = current;
-				betweenQuotes = true;
+			if (!isBetweenQuotes) {
+				quoteCharacter = current;
+				isBetweenQuotes = true;
 				result += changeTo;
-			} else if (quoteChar === current) {
+			} else if (quoteCharacter === current) {
 				// If processing between quotes, close quotes
 				result += changeTo;
-				betweenQuotes = false;
+				isBetweenQuotes = false;
 			} else {
 				// Still inside quotes
 				result += '\\' + changeTo;
@@ -39,30 +37,20 @@ function transform(input, toSingleQuotes) {
 			// Escape + quote to change to
 			if (next === changeTo) {
 				// If in between quotes and quote is equal to changeTo only escape once
-				if (betweenQuotes && quoteChar === changeTo) {
-					result += '\\' + changeTo;
-				}	else {
-					// Not between quotes, escape twice
-					result += '\\\\' + changeTo;
-				}
-				i++;
+				result += isBetweenQuotes && quoteCharacter === changeTo ? '\\' + changeTo : '\\\\' + changeTo;
+				index++;
 			} else if (next === toChange) {
 				// Escape + quote to be changed
 				// If between quotes can mantain tochange
-				if (betweenQuotes) {
-					result += toChange;
-				}	else {
-					// Otherwise replace it by quote changeto
-					result += changeTo;
-				}
-				i++;
+				result += isBetweenQuotes ? toChange : changeTo;
+				index++;
 			} else {
 				result += current;
 			}
 		} else if (current === '\\' && next === '\\') {
 			// Don't touch backslashes
 			result += '\\\\';
-			i++;
+			index++;
 		} else {
 			result += current;
 		}
@@ -71,6 +59,8 @@ function transform(input, toSingleQuotes) {
 	return result;
 }
 
-module.exports = input => transform(input, true);
+export default function toSingleQuotes(string) {
+	return transform(string, true);
+}
 
-module.exports._transform = transform;
+toSingleQuotes._transform = transform;
