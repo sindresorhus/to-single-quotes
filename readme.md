@@ -4,8 +4,8 @@
 
 ## Install
 
-```
-$ npm install to-single-quotes
+```sh
+npm install to-single-quotes
 ```
 
 ## Usage
